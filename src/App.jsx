@@ -52,11 +52,26 @@ function App() {
       />
 
       {/* Grid */}
-      <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-        {filteredJobs.map((job) => (
-          <JobCard key={job.id} job={job} searchTerm={searchTerm} />
-        ))}
-      </div>
+      <div className="mt-12">
+  {filteredJobs.length === 0 ? (
+    <div className="border border-neutral-200 rounded-2xl p-12 text-center bg-neutral-50">
+      <h3 className="text-xl font-semibold mb-3">
+        No results found
+      </h3>
+      <p className="text-neutral-500 text-sm max-w-md mx-auto">
+        We couldn’t find any roles matching your current filters.
+        Try adjusting your search or selecting a different job type.
+      </p>
+    </div>
+  ) : (
+    <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+      {filteredJobs.map((job) => (
+        <JobCard key={job.id} job={job} searchTerm={searchTerm} />
+      ))}
+    </div>
+  )}
+</div>
+
 
     </div>
   );
